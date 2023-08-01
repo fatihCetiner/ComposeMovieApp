@@ -1,6 +1,7 @@
 package com.example.composemovieapp.presentation.movies.views
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
@@ -43,7 +45,10 @@ fun MovieScreen(
                     viewModel.onEvent(MoviesEvent.Search(it))
                 }
             )
-            LazyColumn(modifier = Modifier.fillMaxSize()){
+            LazyColumn(modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ){
                 items(state.movies){ movie ->
                     MovieListRow(movie = movie, onItemClick = {
                         navController.navigate(Screen.MovieDetailScreen.route+"/${movie.imdbID}")
