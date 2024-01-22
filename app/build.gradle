@@ -41,7 +41,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.4.3'
+        kotlinCompilerExtensionVersion Config.kotlinCompilerExtensionVersion
     }
     packagingOptions {
         resources {
@@ -68,17 +68,26 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
 
     // Compose dependencies
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1"
-    implementation "androidx.navigation:navigation-compose:2.6.0-rc01"
-    implementation "com.google.accompanist:accompanist-flowlayout:0.17.0"
+    implementation Libs.Compose.lifecycleViewModelCompose
+    implementation Libs.Compose.navigationCompose
+    implementation Libs.Compose.accompanistFlowLayout
 
     // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation Libs.Coroutines.kotlinxCoroutinesCore
+    implementation Libs.Coroutines.kotlinxCoroutinesAndroid
 
     // Coroutine Lifecycle Scopes
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+    implementation Libs.Lifecycle.lifecycleViewModelKtx
+    implementation Libs.Lifecycle.lifecycleRuntimeKtx
+
+    // Retrofit
+    implementation Libs.Network.retrofit
+    implementation Libs.Network.converterGson
+    implementation Libs.Network.okhttp
+    implementation Libs.Network.loggingInterceptor
+
+    // Coil
+    implementation Libs.Coil.coilCompose
 
     //Dagger - Hilt
     implementation "com.google.dagger:hilt-android:2.44"
@@ -88,14 +97,11 @@ dependencies {
     implementation 'androidx.hilt:hilt-work:1.0.0'
     implementation 'androidx.work:work-runtime-ktx:2.8.1'
 
-
-    // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
-    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
-
-    // Coil
-    implementation Libs.Coil.coilCompose
+    //implementation Libs.DaggerHilt.hiltAndroid
+    //kapt Libs.DaggerHilt.hiltAndroidCompiler
+    //kapt Libs.DaggerHilt.hiltCompiler
+    //implementation Libs.DaggerHilt.hiltNavigationCompose
+    //implementation Libs.DaggerHilt.hiltWork
+    //implementation Libs.DaggerHilt.workRuntimeKtx
 
 }
