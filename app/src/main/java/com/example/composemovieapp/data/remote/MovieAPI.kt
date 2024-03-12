@@ -3,6 +3,7 @@ package com.example.composemovieapp.data.remote
 import com.example.composemovieapp.data.remote.dto.MovieDetailDto
 import com.example.composemovieapp.data.remote.dto.MoviesDto
 import com.example.composemovieapp.util.Constants.API_KEY
+import com.google.gson.internal.GsonBuildConfig
 import retrofit2.http.GET
 import retrofit2.http.Query
 

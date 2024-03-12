@@ -10,9 +10,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.os.BuildCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.composemovieapp.BuildConfig
 import com.example.composemovieapp.presentation.movie_detail.views.MovieDetailScreen
 import com.example.composemovieapp.presentation.movies.views.MovieScreen
 import com.example.composemovieapp.presentation.ui.theme.ComposeMovieAppTheme
