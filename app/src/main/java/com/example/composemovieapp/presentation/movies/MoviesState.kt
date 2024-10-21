@@ -1,5 +1,6 @@
 package com.example.composemovieapp.presentation.movies
 
+import com.example.composemovieapp.BuildConfig
 import com.example.composemovieapp.domain.model.Movie
 
 data class MoviesState(
