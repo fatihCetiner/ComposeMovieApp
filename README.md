@@ -1,71 +1,49 @@
-# Movie App
+## Compose Movie App 🎬
+Compose Movie App is an Android application that fetches and displays movies from the [OMDb API](http://www.omdbapi.com/). 
+Users can browse a list of movies, view detailed information about each movie, and search for specific films. The app is built using Jetpack Compose and follows the MVVM architecture pattern.
 
-Bu, http://www.omdbapi.com/ adresinden filmleri çekerek listelemek ve filmlerin detay sayfalarını görüntülemek için geliştirilen bir uygulamadır. Uygulama, Jetpack Compose ile modern bir UI geliştirme yaklaşımı kullanır ve MVVM mimarisi ile yapılandırılmıştır. Verilerin çekilmesi için Retrofit kullanılır ve Dagger Hilt ile bağımlılık enjeksiyonu sağlanır. Ayrıca uygulamada Use Case ve Repository katmanları da bulunmaktadır.
+## Features 🚀
+- Movie Listing: Browse a list of movies fetched from the OMDb API.
+- Movie Details: View detailed information about selected movies.
+- Search Functionality: Search for specific movies by title.
+- MVVM Architecture: Ensures a clear separation between the UI and business logic.
 
-## Kullanılan Teknolojiler
+## Technologies and Libraries Used 🛠
+- Jetpack Compose: For building a declarative and modern UI.
+- Retrofit: For making API requests to fetch movie data.
+- OkHttp: For handling HTTP requests and logging.
+- Coroutine Flow: For managing asynchronous data streams.
+- Coil: For loading movie posters and images.
+- Dagger Hilt: For dependency injection.
+- Compose Navigation: For handling navigation between screens.
 
-- Jetpack Compose: Android'in yeni nesil UI toolkit'i olan Jetpack Compose, uygulamanın arayüzünü oluşturmak için kullanılır.
-- MVVM (Model-View-ViewModel): Uygulama mimarisi olarak MVVM kullanılır. Bu mimaride veri kaynağı (Model), kullanıcı arayüzü (View) ve iş mantığı (ViewModel) ayrı ayrı ele alınır.
-- Retrofit: HTTP istekleri yapmak ve verileri almak için kullanılan bir kütüphane.
-- Dagger Hilt: Bağımlılık enjeksiyonu için kullanılan bir kütüphane. Uygulamanın farklı katmanları arasında bağımlılıkların yönetimini kolaylaştırır.
-- Use Case: İş mantığı için kullanılan katman. Uygulama içindeki farklı işlemler ve senaryolar burada yönetilir.
-- Repository: Verilerin alınması ve işlenmesi için kullanılan katman. API ile iletişimi ve yerel veritabanı işlemlerini burada gerçekleştirir.
-- Flow: Asenkron veri akışını temsil eden bir arayüzdür. Coroutine'lerle birlikte çalışarak verileri adım adım göndermek ve işlemek için kullanılır.
+## Architecture Details 🛠️
+- MVVM Architecture:
+  <br>
+1- ViewModel: Handles UI state and manages interaction with the repository using Coroutine Flow.
+  <br>
+2- Repository: Fetches data from the OMDb API and provides it to the ViewModel.
 
-## Kurulum
 
-1. Bu depoyu yerel makinenize klonlayın.
-2. Android Studio'yu açın ve projeyi içe aktarın.
-3. Uygulamanın çalışması için gerekli bağımlılıkları indirin ve Gradle Sync'i çalıştırın.
+- Dependency Injection: Managed with Dagger Hilt for clean and scalable code.
+- Navigation: Handled using Compose Navigation for smooth transitions between screens.
 
-## Kullanım
-
-1. Uygulamayı çalıştırın.
-2. Ana ekranda filmleri listeleyin.
-3. Bir filmi seçerek filmin detay sayfasını görüntüleyin.
-4. Farklı arama kriterlerini kullanarak filmleri filtreleyin.
-
-## Örnek Kullanım Kodu
-
-Uygulama içinde Retrofit ile API istekleri yapılır ve veriler işlenerek kullanıcı arayüzüne aktarılır. Örnek kullanım kodu aşağıdaki gibi olabilir:
-
+## Setup and Run
+1- Clone the repository:
+```bash
+git clone https://github.com/your-username/compose-movie-app.git
+```
+Add your OMDb API key:
+- Sign up for an API key at [OMDb API](http://www.omdbapi.com/).
+- Put the api key in the Constants.kt file in the project.
 ```kotlin
-// Retrofit servisini oluşturun
-val retrofit = Retrofit.Builder()
-    .baseUrl("http://www.omdbapi.com/")
-    .addConverterFactory(GsonConverterFactory.create())
-    .build()
-
-val service = retrofit.create(ApiService::class.java)
-
-// Filmleri çekmek için bir istek yapın
-val response = service.getMovies()
-
-fun getMovies() {
-        viewModelScope.launch {
-            try {
-                // ApiService ile istek yapın ve response alın
-                val response = apiService.getMovies()
-
-                // İstek başarılı ise verileri alın
-                if (response.isSuccessful) {
-                    val movies = response.body()?.movies
-                    // Verileri kullanıcı arayüzüne aktarın
-                    // ...
-                } else {
-                    // Hata durumunda işlemleri ele alın
-                    // ...
-                }
-            } catch (t: Throwable) {
-                // Hata durumunda işlemleri ele alın
-                // ...
-            }
-        }
-    }
+object Constants {
+    const val API_KEY = "YOUR_API_KEY"
 }
 ```
-## Katkıda Bulunma
-Eğer bu projeye katkıda bulunmak isterseniz, lütfen CONTRIBUTING.md dosyasını inceleyin ve pull request göndermeden önce geliştirme adımlarını takip edin.
+3- Open the project in Android Studio and run it on your device/emulator.
 
-## Teşekkürler
-Bu uygulama, http://www.omdbapi.com/ adresi sayesinde sağlanan veriler ve kullanılan teknolojiler ile oluşturulmuştur.
+## Contributing
+- Forking the repository.
+- Working on a new feature or bug fix.
+- Submitting a pull request.
