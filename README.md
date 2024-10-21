@@ -8,6 +8,13 @@ Users can browse a list of movies, view detailed information about each movie, a
 - Search Functionality: Search for specific movies by title.
 - MVVM Architecture: Ensures a clear separation between the UI and business logic.
 
+## Screenshots 📱
+Below are some screenshots of the app:
+<p align="center">
+  <img src="screenshots/movie_list.jpg" alt="Popular Screen" width="200"/>
+  <img src="screenshots/movie_detail.jpg" alt="Upcoming Screen" width="200"/>
+</p>
+
 ## Technologies and Libraries Used 🛠
 - Jetpack Compose: For building a declarative and modern UI.
 - Retrofit: For making API requests to fetch movie data.
